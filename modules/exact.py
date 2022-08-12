@@ -11,9 +11,9 @@ plt.rc('text', usetex=False)
 plt.rcParams.update({'font.size': 15,
                      'legend.fontsize': 15})
 plt.rcParams['font.family'] = 'serif'
-plt.rcParams['axes.labelsize'] = 15
-plt.rcParams['axes.titlesize'] = 15
-plt.rcParams['lines.linewidth'] = 2
+plt.rcParams['axes.labelsize'] = 18
+plt.rcParams['axes.titlesize'] = 20
+plt.rcParams['lines.linewidth'] = 1.5
 
 ### Photon Trajectory Equation (derivation - bhattacharya2003)
 
@@ -87,8 +87,8 @@ def trajectory(l, rad = r_G, plot=False):
         
         ax.plot(x*oneover_r_G, y*oneover_r_G, label=f'Impact Param {np.round(l/r_G, 4)}')
         
-        surface = patches.Circle((0, 0), radius=stop*oneover_r_G, label="Surface", color='blue', alpha=0.3, zorder=100)             
-        horizon = patches.Circle((0, 0), radius=r_G*oneover_r_G, label="Horizon", color='black', alpha=0.3, zorder=200)
+        surface = patches.Circle((0, 0), radius=rad*oneover_r_G, label="Surface", color='blue', alpha=0.3, zorder=100)             
+        horizon = patches.Circle((0, 0), radius=1, label="Horizon", color='black', alpha=0.3, zorder=200)
 
         ax.add_patch(surface)
         ax.add_patch(horizon)
