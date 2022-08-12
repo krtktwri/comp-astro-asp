@@ -12,7 +12,14 @@ def r(x, y):
     return np.sqrt(x**2 + y**2)
 
 def theta(x, y):
-    return np.arctan(y/x)
+    if x >= 0 and y >= 0:       #First quadrant
+        return np.arctan(y/x)
+    if x<0 and y > 0:         #Second quadrant
+        return np.pi + np.arctan(y/x)
+    if x<0 and y < 0:          #Third Quadrant
+        return np.pi - np.arctan(y/x)
+    if x>0 and y < 0:           #Fourth Quadrant
+        return 2*np.pi - np.arctan(y/x)
 
 '''
 Important: For the following functions, both input and output are normalized wrt r_G
