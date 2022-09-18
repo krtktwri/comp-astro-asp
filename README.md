@@ -6,5 +6,5 @@ The general problem that I am trying to understand along with my advisor (Prof. 
 
 # Progress Report
 
-Sep 22 - Understanding how polarization undergoes parallel transport to be able to implement first and second order corrections for Schwarzschild geometries.
+Sep 22 - Understanding how polarization undergoes parallel transport to be able to implement first and second order corrections for Schwarzschild geometries. <br>
 Aug 22 - Finished the pulse profiles integration. Need to make it more adept to parallelization for running on Ashoka's HPC.
