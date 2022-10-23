@@ -6,6 +6,6 @@ The general problem that I am trying to understand along with my advisor (Prof. 
 
 # Progress Report
 
-Oct 22 - Gave a quarter-point update talk (chalkboard format) at Ashoka discussing elements from my thesis. Email for accessing lecture notes. 
-Sep 22 - Understanding how polarization undergoes parallel transport to be able to implement first and second order corrections for Schwarzschild geometries. <br>
+Oct 22 - Trying to teach the computer how to parallel transport Sach's basis numerically in Schwarzschild geometry. Gave a quarter-point update talk (chalkboard format) at Ashoka discussing elements from my thesis. Email for accessing lecture notes. 
+Sep 22 - Understanding the theory behind how polarization undergoes parallel transport to be able to implement first and second order corrections for Schwarzschild geometries. <br>
 Aug 22 - Finished the pulse profiles integration. Need to translate to the code to CUDA for GPU parallelization on university's HPC.
