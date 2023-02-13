@@ -1,0 +1,9 @@
+#Graph Parameters
+plt.rcParams['figure.figsize'] = 12,8
+plt.rc('text', usetex=False)
+plt.rcParams.update({'font.size': 15,
+                     'legend.fontsize': 15})
+plt.rcParams['font.family'] = 'serif'
+plt.rcParams['axes.labelsize'] = 18
+plt.rcParams['axes.titlesize'] = 25
+plt.rcParams['lines.linewidth'] = 1.5

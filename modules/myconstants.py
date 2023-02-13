@@ -9,3 +9,5 @@ r_G = 2*G*nMass/c**2   #Schwarzschild Radius (m)
 oneover_r_G = 1/r_G    #Precomputing
 
 lmin = 2.5981   #(3*1.73205*r_G/2 + (0.000001)) * oneover_r_G
+
+R = 3 #Normalized wrt Schwarzschild Radius
