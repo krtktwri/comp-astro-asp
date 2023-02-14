@@ -3,6 +3,9 @@ from modules.approximations import *
 from modules.surfaceintegration import *
 from modules.myconstants import *
 
+# Assuming constant intensity of ordinary and extraordinary modes
+I_o, I_e = 1, 0
+
 '''
 Function to calculate degree of linear polarization
 Input: Angle between the magnetic field and the scattering plane (theta_prime), magnetic field strength (B), and energy of photon (E)
@@ -40,7 +43,6 @@ def F_I(phase, star, E, res='low'):
     u = 1/R                    # ratio R_g/R (R already in terms of schwarzschild radius)   
     g_R = np.sqrt(1 - (u))     # gravitational redshift parameter
     
-    I_o, I_e = 1, 0 
     F = []                     # empty list to store flux for each patch
     
     # from each alpha and theta
@@ -48,7 +50,7 @@ def F_I(phase, star, E, res='low'):
         for j in range(0, len(phiRange)):
             
             ## calculate psi (using belo function)
-            a = psi2alphaCorrected(psi(thetaRange[i], phiRange[j], [star_eta, star_i], phase), R)         
+            a = psi2alphaCorrected((np.pi/2 - phiRange[j]), R)         
                         
             ## compute flux in Q stokes parameter from this area element
             F.append(g_R*dA*np.cos(a)*(I_o+I_e))
@@ -75,16 +77,13 @@ def stokes(phase, star, E, res='low'):
     phiRange = np.arange(0, 2*np.pi, dphi)
 
     dA = R**2*dtheta*dphi       # unit area element
-    Theta = np.abs(star_i - star_eta)    # angle between LOS and magnetic axis [WARNING: Theta is not the same as theta AND I am not sure whether this is the correct relation]
+    Theta = np.arccos(np.cos(star_eta)*np.cos(star_i) + np.sin(star_eta)*np.sin(star_i)*np.cos(phase))    # angle between LOS and magnetic axis [WARNING: Theta is not the same as theta AND I am not sure whether this is the correct relation]
     
     u = 1/R                    # ratio R_g/R (R already in terms of schwarzschild radius)   
     g_R = np.sqrt(1 - (u))     # gravitational redshift parameter
-    
-    I_o, I_e = 1, 0
-    B_p = 1                    # magnetic field strength at the poles (normalized)
-    
+        
     # GR correction to magnetic dipole moment (eq. 14 - pavlov2000)
-    f = 2*(u**2 - 2*u - 2*(1-u)*np.log(1-u))/(np.sqrt(1-u)*(u**2 + 2*u +2*np.log(1-u)))
+    f = 2*(u**2 - 2*u - 2*(1-u)*np.log(1-u))/(np.sqrt(1-u)*(u**2 + 2*u + 2*np.log(1-u)))
     
     FQ, FU = [], []                     # empty list to store flux for each patch
     
@@ -93,7 +92,7 @@ def stokes(phase, star, E, res='low'):
         for j in range(0, len(phiRange)):
             
             ## calculate psi (using belo function)
-            a = psi2alphaCorrected(psi(thetaRange[i], phiRange[j], [star_eta, star_i], phase), R)         
+            a = psi2alphaCorrected((np.pi/2 - phiRange[j]), R)         
         
             ### r_hat vector components in x, y, z coordinates (eq 15 - pavlov2000)
             r_hat = np.array([np.sin(phiRange[j])*np.cos(thetaRange[i]), np.sin(phiRange[j])*np.sin(thetaRange[i]), np.cos(phiRange[j])])
@@ -110,7 +109,7 @@ def stokes(phase, star, E, res='low'):
             m_hat = np.array([np.sin(Theta), 0, np.cos(Theta)])
             
             ## get magnetic field at all points (eq 13 - pavlov2000) 
-            B_vec = (B_p/2)*((2+f)*np.dot(r_hat, m_hat)*r_hat - f*m_hat)  # in the basis vectors of r_hat(x,y,z) and m_hat(x,y,z)
+            B_vec = (B_p/2)*((2+f)*np.dot(r_hat, m_hat)*r_hat - f*m_hat)  # in the basis vectors of (x,y,z)
             B_vec_prime = np.dot(T, B_vec)                                # in the prime coordinates (x', y', z')
             
             ## find phi' using By' and Bx'.  
@@ -120,8 +119,8 @@ def stokes(phase, star, E, res='low'):
             Theta_prime = np.arccos(B_vec_prime[2]/np.linalg.norm(B_vec_prime))  
             
             ## angle between B_vec and normal to the surface
-            Theta_B = np.arccos(np.dot(B_vec, r_hat))
-            B = B_p * f * np.sqrt(4 - (4 - f**2)*np.cos(Theta_B)**2)  # magnetic field strength at the surface (eq. 17 - pavlov2000)
+            Theta_B = np.arccos(np.dot(B_vec/np.linalg.norm(B_vec), r_hat))
+            B = B_p * f / np.sqrt(4 - (4 - f**2)*np.cos(Theta_B)**2)  # magnetic field strength at the surface (eq. 17 - pavlov2000)
             
             # degree of linear polarization
             p_L = linear_polarization(Theta_prime, B, g_R*E)
@@ -130,4 +129,4 @@ def stokes(phase, star, E, res='low'):
             FQ.append(g_R*dA*np.cos(a)*(I_o-I_e)*p_L*np.cos(2*(thetaRange[i] - phi_prime)))
             FU.append(g_R*dA*np.cos(a)*(I_e-I_o)*p_L*np.sin(2*(thetaRange[i] - phi_prime)))
 
-    return np.sum(FQ), np.sum(FU)
+    return np.nansum(FQ), np.nansum(FU)
