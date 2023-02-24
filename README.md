@@ -5,7 +5,7 @@ This repository is for version controlling the code that I would be writing for 
 For my undergraduate thesis (with Prof. Dipankar Bhattacharya), I simulate polarization transport near neutron stars to generate pulse profiles of flux observed in desired stokes parameters. The goal behind having a model of pulse profiles is to narrow down the parameter space using observational data through bayesian inferences. Extracting a map of surface polarization using polarization observations can point us towards new developments in the multiphysics governing slab mechanisms. 
 
 # Progress Report
-Now - Preparing a short presentation (6 minutes) for Durham Ph.D. interview and a slightly longer one (10 minutes) for Bonn-Cologne Graduate Scholarship. Notes would be uploaded in the 'talks' folder. 
+Now - Preparing a short presentation (6 minutes) for Durham Ph.D. interview and a slightly longer one (10 minutes) for Bonn-Cologne Graduate Scholarship. Notes would be uploaded in the 'talks' folder. <br>
 Jan 22 - Completed implementing polarization transport (as prescribed in Pavlov and Zavlin (2000) using modified Beloborodov corrections. <br>
 Dec 22 - Attempted polarization transport results from Hu et al (2022). <br>
 Nov 22 - Attempted analytic calculations using Sachs formalism and isentropic Schwarzschild coordinates to get the corrections. (Grad School application season = slow progress)  
