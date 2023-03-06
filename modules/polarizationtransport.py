@@ -130,3 +130,23 @@ def stokes(phase, star, E, res='low'):
             FU.append(g_R*dA*np.cos(a)*(I_e-I_o)*p_L*np.sin(2*(thetaRange[i] - phi_prime)))
 
     return np.nansum(FQ), np.nansum(FU)
+
+# create a class for observation
+'''
+Am observation class represents a single observation of a given neutron star, 
+for a specific phase range (in radians), at a given energy.
+'''
+class observation:
+    def __init__(self, star, phaseRange, E):
+        
+        stokesParamComputed = [stokes(m, star, E, res='low') for m in phaseRange]
+        stokesOutput = np.transpose(stokesParamComputed)
+    
+        # Computed Stokes Parameters
+        self.FQ = stokesOutput[0]
+        self.FU = stokesOutput[1]
+        
+        totalI = [F_I(m, star, E, res='low') for m in phaseRange]
+        
+        # Total Intensity
+        self.I = totalI

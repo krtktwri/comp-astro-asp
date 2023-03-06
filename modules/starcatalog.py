@@ -15,6 +15,7 @@ class star:
     self.i = np.deg2rad(i)       # angle between LOS and spin axis
     self.B_p = B_p   # magnetic field strength at the poles (in 10^12 Gauss)
     
+    
 # Changing Angle between Magnetic Axis and Spin Axis
 NS1 = star(3, 1.6, 0, 0, 1.4)
 NS2 = star(3, 1.6, 45, 0, 1.4)
@@ -39,3 +40,5 @@ NS13 = star(3, 1.6, 40, 50, 1)
 NS14 = star(3, 1.6, 45, 60, 0.1)
 NS15 = star(3, 1.6, 45, 60, 1)
 NS16 = star(3, 1.6, 45, 60, 10)
+
+# and so on

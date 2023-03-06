@@ -2,6 +2,7 @@ import numpy as np
 from modules.approximations import *
 from modules.myconstants import *
 
+
 '''
 Geometry adapted from Appendix 2 of mb2011 (see '/papers' folders)
 '''
@@ -46,23 +47,23 @@ def flux_per_unitArea(theta, phi, c, phase, dA):
     else:
         return I(theta, phi, c) * (dA) * np.cos(a)
     
-    
-    
+
+
 # Acquiring complete pulse profile    
 def pulseProfile(phase, c, res='low'): 
     
     if res == 'low':
-        dtheta, dphi = 0.1, 0.1        #Low Resolution for testing
+        dtheta, dphi = 0.1, 0.1        # Low Resolution for testing
     else:
-        dtheta, dphi = 0.05, 0.05     #Higher Resolution for final
-
+        dtheta, dphi = 0.05, 0.05      # Higher Resolution for final
+    
     # Initializing Arrays
     thetaRange = np.arange(-np.pi, np.pi, dtheta)
     phiRange = np.arange(0, 2*np.pi, dphi)
 
     F = []
 
-   #Summing over all area patches on the surface
+    #Summing over all area patches on the surface
     for i in range(0, len(thetaRange)):
         for j in range(0, len(phiRange)):
             F.append(flux_per_unitArea(thetaRange[i], phiRange[j], c, phase, (R**2*dtheta*dphi)))
