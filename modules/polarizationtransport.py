@@ -74,7 +74,7 @@ def stokes(phase, star, E, res='low'):
     
     # Initializing Arrays
     thetaRange = np.arange(-np.pi, np.pi, dtheta)
-    phiRange = np.arange(0, 2*np.pi, dphi)
+    phiRange = np.arange(0, alpha2psiCorrected(np.pi/2, R), dphi)
 
     dA = R**2*dtheta*dphi       # unit area element
     Theta = np.arccos(np.cos(star_eta)*np.cos(star_i) + np.sin(star_eta)*np.sin(star_i)*np.cos(phase))    # angle between LOS and magnetic axis [WARNING: Theta is not the same as theta AND I am not sure whether this is the correct relation]
