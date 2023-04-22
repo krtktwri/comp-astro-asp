@@ -8,13 +8,13 @@ eta (angle between magnetic axis and spin axis), i (angle between LOS and spin a
 B_p (magnetic field strength at the poles in 10^12 Gauss)
 '''
 class star:
-  def __init__(self, R, M, eta, i, B_p):
-    self.radius = R  # in terms of schwarzschild radius
-    self.mass = M    # in terms of solar masses
-    self.eta = np.deg2rad(eta)   # angle between magnetic axis and spin axis
-    self.i = np.deg2rad(i)       # angle between LOS and spin axis
-    self.B_p = B_p   # magnetic field strength at the poles (in 10^12 Gauss)
-    
+    def __init__(self, R, M, eta, i, B_p):
+        self.radius = R  # in terms of schwarzschild radius
+        self.mass = M    # in terms of solar masses
+        self.eta = np.deg2rad(eta)   # angle between magnetic axis and spin axis
+        self.i = np.deg2rad(i)       # angle between LOS and spin axis
+        self.B_p = B_p   # magnetic field strength at the poles (in 10^12 Gauss)
+
     
 # Changing Angle between Magnetic Axis and Spin Axis
 NS1 = star(3, 1.6, 0, 0, 1.4)
@@ -40,5 +40,11 @@ NS13 = star(3, 1.6, 40, 50, 1)
 NS14 = star(3, 1.6, 45, 60, 0.1)
 NS15 = star(3, 1.6, 45, 60, 1)
 NS16 = star(3, 1.6, 45, 60, 10)
+
+# Changing compactness
+NS17 = star(2.2, 1.6, 45, 60, 0.1)
+NS18 = star(2.4, 1.6, 45, 60, 0.1)
+NS19 = star(2.6, 1.6, 45, 60, 0.1)
+NS20 = star(2.8, 1.6, 45, 60, 0.1)
 
 # and so on
