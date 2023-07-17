@@ -9,7 +9,7 @@ For my undergraduate thesis (with Prof. Dipankar Bhattacharya), I simulate polar
 Though I have officially completed the requirements of the degree, there are (primarily) two extension extensions which remains on my to-do list still <br>
 1. Adding a Feautrier Module to perform radiative transfer calculations. <br>
 2. Including more source functions to cover possible surface intensity distributions. <br>
-\\
+
 May 23 - Submitted, presented and defended my thesis successfully. Thesis and bibliography available on the github repo. <br>
 Apr 23 - Generated results to cover a wider region of the possible parameter space. Presented intial results at Meera Memorial Competition (at St. Stephens College) and won first prize. <br>
 Mar 23 - Working on including gaussian polar cap models for surface intensity maps. Also, developing psuedo-code for inference modules and reviewing existing slab physics simulations programs. <br>
